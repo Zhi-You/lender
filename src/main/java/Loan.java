@@ -4,11 +4,23 @@ public class Loan {
     private boolean isPaid;
     private double interestRate;
 
+    // class level member - a static variable. Every object of the loan class shares this
+    private static int maxLoanAmount = 0;
+
     public Loan(String borrower, int amount, double interestRate) {
         this.borrower = borrower;
         this.amount = amount;
         this.interestRate = interestRate;
         this.isPaid = false;
+
+        if  (amount > maxLoanAmount) {
+            maxLoanAmount = amount;
+        }
+    }
+
+    // class level method - a getter
+    public static int getMaxLoanAmount() {
+        return maxLoanAmount;
     }
 
     public void setAsPaid() {
